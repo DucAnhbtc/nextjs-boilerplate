@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-blue-50 to-white text-gray-900">
@@ -11,15 +13,26 @@ export default function Home() {
         </div>
 
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
-          <a href="#" className="hover:text-blue-600">Trang chủ</a>
-          <a href="#" className="hover:text-blue-600">Khóa học</a>
-          <a href="#" className="hover:text-blue-600">Tính năng</a>
-          <a href="#" className="hover:text-blue-600">Về chúng tôi</a>
+          <Link href="/" className="hover:text-blue-600">
+            Trang chủ
+          </Link>
+          <Link href="/khoahoc" className="hover:text-blue-600">
+            Khóa học
+          </Link>
+          <a href="#" className="hover:text-blue-600">
+            Tính năng
+          </a>
+          <a href="#" className="hover:text-blue-600">
+            Về chúng tôi
+          </a>
         </nav>
 
-        <button className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-5 py-2.5 rounded-full text-sm font-medium hover:opacity-90 transition">
+        <Link
+          href="/khoahoc"
+          className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-5 py-2.5 rounded-full text-sm font-medium hover:opacity-90 transition"
+        >
           Bắt đầu học →
-        </button>
+        </Link>
       </header>
 
       {/* Hero Section */}
@@ -48,9 +61,14 @@ export default function Home() {
             <button className="bg-blue-600 text-white px-7 py-3.5 rounded-full font-medium hover:bg-blue-700 transition flex items-center gap-2">
               🚀 Học thử miễn phí
             </button>
-            <button className="border border-gray-300 bg-white px-7 py-3.5 rounded-full font-medium hover:bg-gray-50 transition flex items-center gap-2">
+
+            {/* Nút này giờ đã nhấn được */}
+            <Link
+              href="/khoahoc"
+              className="border border-gray-300 bg-white px-7 py-3.5 rounded-full font-medium hover:bg-gray-50 transition flex items-center gap-2"
+            >
               ▶ Xem khóa học
-            </button>
+            </Link>
           </div>
 
           {/* Small features */}
@@ -67,12 +85,10 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Right side - Robot placeholder */}
+        {/* Right side - Robot */}
         <div className="relative flex justify-center">
           <div className="w-80 h-80 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-full flex items-center justify-center relative">
             <div className="text-8xl">🤖</div>
-
-            {/* Speech bubbles */}
             <div className="absolute -top-4 -left-6 bg-white shadow-lg rounded-2xl px-4 py-2 text-sm font-medium">
               Hello!
             </div>
@@ -98,7 +114,6 @@ export default function Home() {
               Luyện phát âm, giao tiếp trong các tình huống thực tế.
             </p>
           </div>
-
           <div className="bg-gray-50 rounded-2xl p-6 hover:shadow-md transition">
             <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-2xl mb-4">
               🧠
@@ -108,7 +123,6 @@ export default function Home() {
               Hiểu trình độ và nhu cầu học của bạn.
             </p>
           </div>
-
           <div className="bg-gray-50 rounded-2xl p-6 hover:shadow-md transition">
             <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center text-2xl mb-4">
               📊
@@ -118,7 +132,6 @@ export default function Home() {
               Theo dõi kết quả học tập mỗi ngày.
             </p>
           </div>
-
           <div className="bg-gray-50 rounded-2xl p-6 hover:shadow-md transition">
             <div className="w-12 h-12 bg-pink-100 rounded-xl flex items-center justify-center text-2xl mb-4">
               ❤️
