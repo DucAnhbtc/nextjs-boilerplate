@@ -1,78 +1,146 @@
-export default function KhoaHoc() {
+// app/khoahoc/page.tsx
+import Link from "next/link";
+
+const courses = [
+  {
+    id: 1,
+    title: "Giao tiếp cơ bản",
+    level: "Beginner",
+    description: "Học các mẫu câu giao tiếp hàng ngày, chào hỏi, giới thiệu bản thân.",
+    lessons: 24,
+    duration: "4 tuần",
+    color: "from-blue-500 to-cyan-400",
+    badge: "Phổ biến",
+  },
+  {
+    id: 2,
+    title: "Giao tiếp nâng cao",
+    level: "Intermediate",
+    description: "Luyện nói tự tin trong công việc, thuyết trình và thảo luận nhóm.",
+    lessons: 32,
+    duration: "6 tuần",
+    color: "from-purple-500 to-pink-400",
+    badge: "Hot",
+  },
+  {
+    id: 3,
+    title: "Luyện phát âm chuẩn",
+    level: "All levels",
+    description: "AI phân tích và chỉnh sửa phát âm theo thời gian thực.",
+    lessons: 18,
+    duration: "3 tuần",
+    color: "from-violet-500 to-indigo-400",
+    badge: "AI",
+  },
+  {
+    id: 4,
+    title: "IELTS Speaking",
+    level: "Advanced",
+    description: "Luyện Speaking Part 1-2-3 với AI chấm điểm và góp ý chi tiết.",
+    lessons: 40,
+    duration: "8 tuần",
+    color: "from-emerald-500 to-teal-400",
+    badge: "Mới",
+  },
+];
+
+export default function KhoaHocPage() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
-      {/* Header đơn giản */}
-      <header className="flex items-center justify-between px-8 py-5 max-w-7xl mx-auto">
-        <div className="flex items-center gap-2">
-          <div className="w-9 h-9 bg-blue-600 rounded-xl flex items-center justify-center text-white font-bold">L</div>
-          <span className="text-xl font-bold">LinguaAI</span>
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+      {/* Header */}
+      <header className="border-b border-slate-100 bg-white/80 backdrop-blur-md sticky top-0 z-50">
+        <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-2">
+            <div className="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center text-white font-bold text-lg">
+              L
+            </div>
+            <span className="text-xl font-bold text-slate-800">LinguaAI</span>
+          </Link>
+
+          <Link
+            href="/"
+            className="px-5 py-2.5 rounded-full bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition"
+          >
+            ← Về trang chủ
+          </Link>
         </div>
-        <a href="/" className="text-blue-600 font-medium hover:underline">← Về trang chủ</a>
       </header>
 
-      <section className="max-w-6xl mx-auto px-8 py-16">
-        <h1 className="text-4xl font-bold text-center mb-4">Khóa học tiếng Anh</h1>
-        <p className="text-center text-gray-600 mb-12">
-          Chọn khóa học phù hợp với trình độ và mục tiêu của bạn
+      {/* Hero */}
+      <section className="max-w-6xl mx-auto px-4 pt-16 pb-12 text-center">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 text-blue-600 text-sm font-medium mb-6">
+          <span>📚</span>
+          <span>Khóa học được thiết kế bởi AI</span>
+        </div>
+
+        <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+          Chọn khóa học phù hợp với{" "}
+          <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            trình độ của bạn
+          </span>
+        </h1>
+
+        <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+          Tất cả khóa học đều có AI đồng hành, luyện nói thực tế và nhận góp ý ngay lập tức.
         </p>
+      </section>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {/* Khóa Free */}
-          <div className="bg-white rounded-2xl shadow-md p-6 border border-gray-100">
-            <div className="text-sm font-medium text-green-600 mb-2">Miễn phí</div>
-            <h3 className="text-xl font-bold mb-3">Giao tiếp cơ bản</h3>
-            <p className="text-gray-600 text-sm mb-6">
-              Học các mẫu câu giao tiếp hàng ngày, phát âm chuẩn và phản xạ cơ bản.
-            </p>
-            <ul className="text-sm text-gray-600 space-y-2 mb-6">
-              <li>• 20 bài học</li>
-              <li>• Luyện nói với AI</li>
-              <li>• Phản hồi phát âm</li>
-            </ul>
-            <button className="w-full bg-green-500 text-white py-3 rounded-xl font-medium hover:bg-green-600 transition">
-              Bắt đầu miễn phí
-            </button>
-          </div>
+      {/* Danh sách khóa học */}
+      <section className="max-w-6xl mx-auto px-4 pb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {courses.map((course) => (
+            <div
+              key={course.id}
+              className="group relative bg-white rounded-3xl border border-slate-100 p-6 hover:shadow-xl hover:border-blue-100 transition-all duration-300"
+            >
+              {/* Badge */}
+              <div className="absolute top-5 right-5">
+                <span className="px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 text-blue-600">
+                  {course.badge}
+                </span>
+              </div>
 
-          {/* Khóa Pro */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 border-2 border-blue-500 relative">
-            <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full">
-              Phổ biến nhất
+              {/* Icon */}
+              <div
+                className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${course.color} flex items-center justify-center text-white text-2xl mb-5`}
+              >
+                {course.id === 1 && "🗣️"}
+                {course.id === 2 && "💼"}
+                {course.id === 3 && "🎤"}
+                {course.id === 4 && "🎯"}
+              </div>
+
+              <div className="mb-1">
+                <span className="text-sm font-medium text-slate-400">
+                  {course.level}
+                </span>
+              </div>
+
+              <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition">
+                {course.title}
+              </h3>
+
+              <p className="text-slate-600 text-sm mb-6 leading-relaxed">
+                {course.description}
+              </p>
+
+              <div className="flex items-center gap-4 text-sm text-slate-500 mb-6">
+                <span className="flex items-center gap-1.5">
+                  📖 {course.lessons} bài học
+                </span>
+                <span className="flex items-center gap-1.5">
+                  ⏱️ {course.duration}
+                </span>
+              </div>
+
+              <button className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-slate-900 text-white text-sm font-medium hover:bg-blue-600 transition">
+                Xem chi tiết
+                <span>→</span>
+              </button>
             </div>
-            <div className="text-sm font-medium text-blue-600 mb-2">Pro</div>
-            <h3 className="text-xl font-bold mb-3">Giao tiếp thực tế</h3>
-            <p className="text-gray-600 text-sm mb-6">
-              Luyện nói theo tình huống công việc, du lịch, phỏng vấn...
-            </p>
-            <ul className="text-sm text-gray-600 space-y-2 mb-6">
-              <li>• 60+ bài học</li>
-              <li>• AI chấm điểm chi tiết</li>
-              <li>• Lộ trình cá nhân hóa</li>
-              <li>• Chứng chỉ hoàn thành</li>
-            </ul>
-            <button className="w-full bg-blue-600 text-white py-3 rounded-xl font-medium hover:bg-blue-700 transition">
-              Đăng ký Pro
-            </button>
-          </div>
-
-          {/* Khóa VIP */}
-          <div className="bg-white rounded-2xl shadow-md p-6 border border-gray-100">
-            <div className="text-sm font-medium text-purple-600 mb-2">VIP</div>
-            <h3 className="text-xl font-bold mb-3">Thành thạo nâng cao</h3>
-            <p className="text-gray-600 text-sm mb-6">
-              Luyện nói chuyên sâu, phản xạ nhanh và từ vựng học thuật.
-            </p>
-            <ul className="text-sm text-gray-600 space-y-2 mb-6">
-              <li>• Không giới hạn bài học</li>
-              <li>• AI Mentor 1-1</li>
-              <li>• Phản hồi chi tiết hàng ngày</li>
-            </ul>
-            <button className="w-full bg-purple-600 text-white py-3 rounded-xl font-medium hover:bg-purple-700 transition">
-              Đăng ký VIP
-            </button>
-          </div>
+          ))}
         </div>
       </section>
-    </main>
+    </div>
   );
 }
